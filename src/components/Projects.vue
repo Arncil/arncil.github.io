@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { Icon } from '@iconify/vue';
 
 const x = ref(0);
 const y = ref(0);
@@ -65,7 +66,7 @@ const data = [
         id: '7',
         title: 'Previous Portfolio Website',
         background: 'previous-portfolio-website',
-        description: 'Time goes by, skills improve, new projects beat old ones. Even though I like my previous portfolio site, I wanted a new one. Still, you can check out that one here.',
+        description: 'Time goes by, skills improve, new projects beat old ones. Even though I\'m proud of my previous portfolio site, I wanted a new one. Still, you can check out that one here.',
         repository: 'https://github.com/Arncil/arncil.github.io',
         website: 'https://arncil.github.io',
     }
@@ -102,8 +103,12 @@ const getImageUrl = image => {
                                 <h1 v-if="currentProject === project.id">{{ project.title }}</h1>
                                 <p>{{ project.description }}</p>
                                 <div class="container__project-glass-content-buttons">
-                                    <button><a :href="project.repository" target="_blank">Repository</a></button>
-                                    <button><a :href="project.website" target="_blank">Website</a></button>
+                                    <button><a :href="project.repository" target="_blank">
+                                            <Icon icon="line-md:github-loop" />Repository
+                                        </a></button>
+                                    <button><a :href="project.website" target="_blank">
+                                            <Icon icon="line-md:external-link" />Website
+                                        </a></button>
                                 </div>
                             </div>
                         </div>
@@ -145,10 +150,15 @@ $class-name: container;
             align-items: center;
             justify-content: center;
 
+            @media (max-width: 930px) {
+                width: 80%;
+            }
+
             &-content {
-                display: grid;
-                place-items: center;
-                grid-template-rows: 1fr 2fr 1fr;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
                 width: 90%;
                 height: 80%;
 
@@ -158,16 +168,27 @@ $class-name: container;
                     text-align: center;
                     color: hsl(0, 0%, 10%);
                     z-index: 1;
-                }
-
-                h1 {
                     font-weight: 500;
                 }
 
-                p {
-                    font-size: 2vw;
-                    font-weight: 400;
+                h1 {
+                    line-height: 1;
+                    -webkit-text-stroke: hsl(0, 0%, 85%) 0.1px;
                 }
+
+                p {
+                    font-size: 2.3vw;
+
+                    @media (max-width: 930px) {
+                        font-size: 3.5vw;
+                    }
+
+                    @media (max-width: 500px) {
+                        font-size: 5vw;
+                    }
+                }
+
+
 
                 &-buttons {
                     display: flex;
@@ -176,12 +197,27 @@ $class-name: container;
                     width: 90%;
 
                     a {
-                        color: inherit;
+                        color: hsl(0, 0%, 85%);
+                        font-weight: 300;
                         text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
+
                     button {
                         font-size: 2.5vw;
                         z-index: 3;
+                        background: linear-gradient(180deg, hsla(0, 0%, 0%, 0.2), hsla(0, 0%, 0%, 0.8));
+                        border: inset 2px hsl(0, 0%, 60%);
+                        width: 15vw;
+                        border-radius: 10px;
+                        box-shadow: 1px 1px 10px hsl(0, 0%, 10%);
+
+                        @media (max-width: 930px) {
+                            width: 30vw;
+                            font-size: 5vw;
+                        }
                     }
                 }
             }
@@ -204,7 +240,7 @@ $class-name: container;
             }
 
             &::after {
-                background: hsla(0, 0%, 100%, 0.2);
+                background: linear-gradient(90deg, hsla(0, 0%, 50%, 0.6), hsla(0, 0%, 50%, 0.2));
             }
 
             &-effect {
