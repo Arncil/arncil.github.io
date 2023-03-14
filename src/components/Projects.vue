@@ -80,7 +80,7 @@ const handleOnMouseMove = e => {
 };
 
 const getImageUrl = image => {
-    const path = `/images/projects/${image}.png`;
+    const path = `/portfolio-website/images/projects/${image}.png`;
     return new URL(path, import.meta.url).href
 };
 
