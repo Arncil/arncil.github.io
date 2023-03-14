@@ -12,26 +12,26 @@ import Image from '../components/Image.vue';
       <Introduction />
     </div>
     <div class="image">
-      <Image path="/portfolio-website/src/assets/images/avatar.png" alt="Miłosz's Avatar" />
+      <Image path="/portfolio-website/images/avatar.png" alt="Miłosz's Avatar" />
     </div>
     <div class="GlowingBox">
       <RouterLink to="/projects">
-        <GlowingBox to="/projects" path="/portfolio-website/src/assets/images/icons/projects.svg" category="Projects"
+        <GlowingBox to="/projects" path="/portfolio-website/icons/projects.svg" category="Projects"
           description="how I spend my days" />
       </RouterLink>
 
       <RouterLink to="/toolbox">
-        <GlowingBox path="/portfolio-website/src/assets/images/icons/technologies.svg" category="Toolbox"
+        <GlowingBox path="/portfolio-website/icons/toolbox.svg" category="Toolbox"
           description="what I use to do the magic" />
       </RouterLink>
 
       <RouterLink to="/about">
-        <GlowingBox path="/portfolio-website/src/assets/images/icons/about.svg" category="About"
+        <GlowingBox path="/portfolio-website/icons/about.svg" category="About"
           description="why I choose to do this stuff" />
       </RouterLink>
 
       <RouterLink to="/contact">
-        <GlowingBox path="/portfolio-website/src/assets/images/icons/contact.svg" category="Contact" description="where I can be found" />
+        <GlowingBox path="/portfolio-website/icons/contact.svg" category="Contact" description="where I can be found" />
       </RouterLink>
 
     </div>
