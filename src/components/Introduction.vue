@@ -38,7 +38,6 @@ const handleOnMouseOver = event => {
         <Transition name="three" appear>
             <h3 @mouseover="handleOnMouseOver" data-value="I'm a web developer">I'm a web developer</h3>
         </Transition>
-
     </header>
 </template>
 
@@ -241,6 +240,4 @@ h3 {
         background-position: 400%
     }
 }
-
-
 </style>

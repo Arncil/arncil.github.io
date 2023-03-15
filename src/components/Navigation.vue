@@ -1,12 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { Icon } from '@iconify/vue';
-
 </script>
 
 <template>
     <Transition name="navigation" appear>
-        <nav>
+        <nav id="nav">
             <div class="links">
                 <RouterLink to="/">
                     <Icon icon="mingcute:home-2-fill" />
@@ -39,14 +38,13 @@ nav {
     align-items: center;
     justify-content: right;
     width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
     background: linear-gradient(180deg, hsl(0, 0%, 10%), hsl(0, 0%, 15%));
     border-bottom: 1px solid hsl(0, 0%, 20%);
     box-shadow: 0 2px 10px hsl(0, 0%, 10%);
-
 }
 
 img {
@@ -64,6 +62,14 @@ a {
     justify-content: center;
 }
 
+h5 {
+    margin-left: 5px;
+}
+
+a.router-link-active h5 {
+    font-weight: 500;
+}
+
 .links {
     width: 60%;
     display: flex;
@@ -72,62 +78,47 @@ a {
 
 
 .navigation-enter-active {
-	-webkit-animation: slide-in-blurred-bottom 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-	        animation: slide-in-blurred-bottom 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    -webkit-animation: flip-in-hor-bottom 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-hor-bottom 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .navigation-leave-active {
-	-webkit-animation: slide-in-blurred-bottom 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both reverse;
-	        animation: slide-in-blurred-bottom 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both reverse;
+    -webkit-animation: flip-in-hor-bottom 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
+    animation: flip-in-hor-bottom 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
 }
 
- @-webkit-keyframes slide-in-blurred-bottom {
-  0% {
-    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-            transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
-  }
+@-webkit-keyframes flip-in-hor-bottom {
+    0% {
+        -webkit-transform: rotateX(80deg);
+        transform: rotateX(80deg);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
+    }
 }
-@keyframes slide-in-blurred-bottom {
-  0% {
-    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-            transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-            transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
-  }
+
+@keyframes flip-in-hor-bottom {
+    0% {
+        -webkit-transform: rotateX(80deg);
+        transform: rotateX(80deg);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
+    }
 }
+
+
 
 
 @media (max-width: 930px) {
-    nav {
-        width: 100%;
-        left: 0;
-    }
 
     a {
         font-size: 8vw;

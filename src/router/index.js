@@ -4,6 +4,8 @@ import ProjectsView from '../views/ProjectsView.vue'
 import ToolboxView from '../views/ToolboxView.vue'
 import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
+import Test from '../views/Test.vue'
+
 
 
 const router = createRouter({
@@ -18,6 +20,11 @@ const router = createRouter({
       path: '/projects',
       name: 'projects',
       component: ProjectsView
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     },
     {
       path: '/toolbox',
@@ -36,5 +43,7 @@ const router = createRouter({
     },
   ]
 })
+
+
 
 export default router

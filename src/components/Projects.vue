@@ -4,7 +4,7 @@ import { Icon } from '@iconify/vue';
 
 const x = ref(0);
 const y = ref(0);
-const currentProject = ref(-1)
+const currentProject = ref(0)
 const data = [
     {
         id: '0',
@@ -26,7 +26,7 @@ const data = [
         id: '2',
         title: 'Gradient Generator',
         background: 'gradient-generator',
-        description: 'Today, the internet is full of all kinds of useful tools. I\'ve decided to make that number even bigger. With this Gradient Generator, you can easily choose the linear gradient that suits your needs best.',
+        description: 'Today, the Internet is full of all kinds of useful tools. I\'ve decided to make that number even bigger. With this Gradient Generator, you can easily choose the linear gradient that suits your needs best.',
         repository: 'https://github.com/arncil/gradient-generator',
         website: 'https://arncil.github.io/gradient-generator',
     },
@@ -58,7 +58,7 @@ const data = [
         id: '6',
         title: 'Easy Notes',
         background: 'easy-notes',
-        description: 'I know there are already too many apps for making notes. Even so, I wanted to build one. Here it is.',
+        description: 'I know there are already too many apps for making notes. Even so, I wanted to build one. And here it is!',
         repository: 'https://github.com/arncil/easy-notes',
         website: 'https://arncil.github.io/easy-notes',
     },
@@ -97,18 +97,22 @@ const getImageUrl = image => {
                     <Transition name="text">
                         <div class="container__project-glass" v-if="currentProject === project.id">
                             <div class="container__project-glass-effect" @mousemove="handleOnMouseMove"
-                                :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.5) 5%, transparent 40%` }">
+                                :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.3) 5%, transparent 40%` }">
                             </div>
                             <div class="container__project-glass-content">
                                 <h1 v-if="currentProject === project.id">{{ project.title }}</h1>
                                 <p>{{ project.description }}</p>
                                 <div class="container__project-glass-content-buttons">
-                                    <button><a :href="project.repository" target="_blank">
+                                    <button>
+                                        <a :href="project.repository" target="_blank">
                                             <Icon icon="line-md:github-loop" />Repository
-                                        </a></button>
-                                    <button><a :href="project.website" target="_blank">
+                                        </a>
+                                    </button>
+                                    <button>
+                                        <a :href="project.website" target="_blank">
                                             <Icon icon="line-md:external-link" />Website
-                                        </a></button>
+                                        </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +129,6 @@ $project-length: 8;
 $class-name: container;
 
 .#{$class-name} {
-
     &__project {
         &-stick {
             top: 2rem;
@@ -142,8 +145,8 @@ $class-name: container;
         }
 
         &-glass {
-            height: 60%;
-            width: 60%;
+            height: 65%;
+            width: 65%;
             position: relative;
             border-radius: 15px;
             display: flex;
@@ -173,7 +176,7 @@ $class-name: container;
 
                 h1 {
                     line-height: 1;
-                    -webkit-text-stroke: hsl(0, 0%, 85%) 0.1px;
+                    -webkit-text-stroke: hsl(0, 0%, 55%) 0.1px;
                 }
 
                 p {
@@ -203,6 +206,8 @@ $class-name: container;
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        transition: all 0.4s;
+
                     }
 
                     button {
@@ -213,6 +218,12 @@ $class-name: container;
                         width: 15vw;
                         border-radius: 10px;
                         box-shadow: 1px 1px 10px hsl(0, 0%, 10%);
+                        transition: all 0.4s;
+
+                        :hover {
+                            -webkit-animation: vibrate-1 0.3s linear infinite both;
+                            animation: vibrate-1 0.3s linear infinite both;
+                        }
 
                         @media (max-width: 930px) {
                             width: 30vw;
@@ -258,9 +269,6 @@ $class-name: container;
             }
         }
 
-
-
-
         @for $i from 1 through $project-length {
             &:nth-child(#{$i}) {
                 @if $i >1 {
@@ -269,31 +277,94 @@ $class-name: container;
 
                 height: $project-height * ($project-length - $i)+$project-height;
             }
-
         }
     }
 }
 
-
 .text-enter-active {
-    -webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: focus-in-expand-fwd 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: focus-in-expand-fwd 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .text-leave-active {
-    -webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-    animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
+    -webkit-animation: focus-in-expand-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
+    animation: focus-in-expand-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
 }
 
 .projects-enter-active {
-    -webkit-animation: swing-in-top-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-    animation: swing-in-top-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    -webkit-animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
+    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
 }
 
 .projects-leave-active {
-    -webkit-animation: swing-in-top-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both reverse;
-    animation: swing-in-top-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) both reverse;
+    -webkit-animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
+    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
 }
+
+@-webkit-keyframes vibrate-1 {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+
+    20% {
+        -webkit-transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        -webkit-transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        -webkit-transform: translate(2px, 2px);
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        -webkit-transform: translate(2px, -2px);
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+}
+
+@keyframes vibrate-1 {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+
+    20% {
+        -webkit-transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        -webkit-transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        -webkit-transform: translate(2px, 2px);
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        -webkit-transform: translate(2px, -2px);
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+}
+
 
 @-webkit-keyframes focus-in-expand-fwd {
     0% {
@@ -333,38 +404,30 @@ $class-name: container;
     }
 }
 
-@-webkit-keyframes swing-in-top-fwd {
+@-webkit-keyframes tilt-in-tl {
     0% {
-        -webkit-transform: rotateX(-100deg);
-        transform: rotateX(-100deg);
-        -webkit-transform-origin: top;
-        transform-origin: top;
+        -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+        transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
         opacity: 0;
     }
 
     100% {
-        -webkit-transform: rotateX(0deg);
-        transform: rotateX(0deg);
-        -webkit-transform-origin: top;
-        transform-origin: top;
+        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
         opacity: 1;
     }
 }
 
-@keyframes swing-in-top-fwd {
+@keyframes tilt-in-tl {
     0% {
-        -webkit-transform: rotateX(-100deg);
-        transform: rotateX(-100deg);
-        -webkit-transform-origin: top;
-        transform-origin: top;
+        -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+        transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
         opacity: 0;
     }
 
     100% {
-        -webkit-transform: rotateX(0deg);
-        transform: rotateX(0deg);
-        -webkit-transform-origin: top;
-        transform-origin: top;
+        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
         opacity: 1;
     }
 }
