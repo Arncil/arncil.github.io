@@ -88,39 +88,36 @@ const getImageUrl = image => {
 </script>
 
 <template>
-    <Transition name="projects" appear>
-        <div class="container">
-            <div class="container__project" v-for="project in data" :key="project.id">
-                <div class="container__project-stick"
-                    :style="{ backgroundImage: `url(${getImageUrl(project.background)})` }"
-                    @mouseenter="() => currentProject = project.id">
-                    <Transition name="text">
-                        <div class="container__project-glass" v-if="currentProject === project.id">
-                            <div class="container__project-glass-effect" @mousemove="handleOnMouseMove"
-                                :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.3) 5%, transparent 40%` }">
-                            </div>
-                            <div class="container__project-glass-content">
-                                <h1 v-if="currentProject === project.id">{{ project.title }}</h1>
-                                <p>{{ project.description }}</p>
-                                <div class="container__project-glass-content-buttons">
-                                    <button>
-                                        <a :href="project.repository" target="_blank">
-                                            <Icon icon="line-md:github-loop" />Repository
-                                        </a>
-                                    </button>
-                                    <button>
-                                        <a :href="project.website" target="_blank">
-                                            <Icon icon="line-md:external-link" />Website
-                                        </a>
-                                    </button>
-                                </div>
+    <div class="container">
+        <div class="container__project" v-for="project in data" :key="project.id">
+            <div class="container__project-stick" :style="{ backgroundImage: `url(${getImageUrl(project.background)})` }"
+                @mouseenter="() => currentProject = project.id" @touchmove="() => currentProject = project.id">
+                <Transition name="text">
+                    <div class="container__project-glass" v-if="currentProject === project.id">
+                        <div class="container__project-glass-effect" @mousemove="handleOnMouseMove"
+                            :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.3) 5%, transparent 40%` }">
+                        </div>
+                        <div class="container__project-glass-content" v-if="currentProject === project.id">
+                            <h1>{{ project.title }}</h1>
+                            <p>{{ project.description }}</p>
+                            <div class="container__project-glass-content-buttons">
+                                <button>
+                                    <a :href="project.repository" target="_blank">
+                                        <Icon icon="line-md:github-loop" />Repository
+                                    </a>
+                                </button>
+                                <button>
+                                    <a :href="project.website" target="_blank">
+                                        <Icon icon="line-md:external-link" />Website
+                                    </a>
+                                </button>
                             </div>
                         </div>
-                    </Transition>
-                </div>
+                    </div>
+                </Transition>
             </div>
         </div>
-    </Transition>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -129,6 +126,8 @@ $project-length: 8;
 $class-name: container;
 
 .#{$class-name} {
+    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
+
     &__project {
         &-stick {
             top: 2rem;
@@ -190,8 +189,6 @@ $class-name: container;
                         font-size: 5vw;
                     }
                 }
-
-
 
                 &-buttons {
                     display: flex;
@@ -291,100 +288,6 @@ $class-name: container;
     animation: focus-in-expand-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
 }
 
-.projects-enter-active {
-    -webkit-animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
-    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
-}
-
-.projects-leave-active {
-    -webkit-animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-}
-
-@-webkit-keyframes vibrate-1 {
-    0% {
-        -webkit-transform: translate(0);
-        transform: translate(0);
-    }
-
-    20% {
-        -webkit-transform: translate(-2px, 2px);
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        -webkit-transform: translate(-2px, -2px);
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        -webkit-transform: translate(2px, 2px);
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        -webkit-transform: translate(2px, -2px);
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        -webkit-transform: translate(0);
-        transform: translate(0);
-    }
-}
-
-@keyframes vibrate-1 {
-    0% {
-        -webkit-transform: translate(0);
-        transform: translate(0);
-    }
-
-    20% {
-        -webkit-transform: translate(-2px, 2px);
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        -webkit-transform: translate(-2px, -2px);
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        -webkit-transform: translate(2px, 2px);
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        -webkit-transform: translate(2px, -2px);
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        -webkit-transform: translate(0);
-        transform: translate(0);
-    }
-}
-
-
-@-webkit-keyframes focus-in-expand-fwd {
-    0% {
-        letter-spacing: -0.5em;
-        -webkit-transform: translateZ(-800px);
-        transform: translateZ(-800px);
-        -webkit-filter: blur(12px);
-        filter: blur(12px);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-filter: blur(0);
-        filter: blur(0);
-        opacity: 1;
-    }
-}
-
 @keyframes focus-in-expand-fwd {
     0% {
         letter-spacing: -0.5em;
@@ -400,20 +303,6 @@ $class-name: container;
         transform: translateZ(0);
         -webkit-filter: blur(0);
         filter: blur(0);
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes tilt-in-tl {
-    0% {
-        -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
-        transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
-        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
         opacity: 1;
     }
 }

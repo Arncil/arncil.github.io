@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-
-const {} = defineProps(['path', 'category', 'description'])
+import { Icon } from '@iconify/vue';
+const props = defineProps(['icon', 'social', 'description'])
 const x = ref(0);
 const y = ref(0);
 
@@ -14,16 +14,18 @@ const handleOnMouseMove = e => {
 </script>
  
 <template>
-        <div class="box">
-            <div class="effect" @mousemove="handleOnMouseMove"
-                :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.1) 5%, hsla(0, 0%, 100%, 0.05) 40%` }">
-            </div>
-            <img :src="path" :alt="category + ' Icon'">
-            <div class="grid">
-                <h4>{{ category }}</h4>
-                <h6>{{ description }}</h6>
-            </div>
+    <div class="box">
+        <div class="effect" @mousemove="handleOnMouseMove"
+            :style="{ background: `radial-gradient(300px circle at ${x}px ${y}px, hsla(0, 0%, 100%, 0.1) 5%, hsla(0, 0%, 100%, 0.05) 40%` }">
         </div>
+        <h1>
+            <Icon :icon="props.icon" />
+        </h1>
+        <div class="grid">
+            <h4>{{ props.social }}</h4>
+            <h6>{{ props.description }}</h6>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -75,6 +77,11 @@ img {
 .grid {
     display: grid;
     place-items: center;
+}
+
+h1 {
+    font-size: 10vw;
+    line-height: 1;
 }
 
 h4 {
@@ -129,6 +136,11 @@ h6 {
 
     to {
         background-position: 400%
+    }
+}
+@media (max-width: 930px) {
+    h1 {
+        font-size: 15vw;
     }
 }
 </style>

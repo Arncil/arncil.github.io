@@ -10,12 +10,9 @@ import GlowingBox from '../components/GlowingBox.vue';
     <div class="introduction">
       <Introduction />
     </div>
-
-    <Transition name="image" appear>
-      <div class="image">
-        <img src="/portfolio-website/images/avatar.png" alt="Miłosz's Avatar">
-      </div>
-    </Transition>
+    <div class="image">
+      <img src="/portfolio-website/images/avatar.png" alt="Miłosz's Avatar">
+    </div>
     <div class="GlowingBox">
       <RouterLink to="/projects">
         <GlowingBox path="/portfolio-website/icons/projects.svg" category="Projects" description="how I spend my days" />
@@ -79,6 +76,7 @@ img {
   height: 20vw;
   -webkit-filter: drop-shadow(2px 2px 20px hsla(0, 0%, 0%, 0.5));
   filter: drop-shadow(2px 2px 20px hsla(0, 0%, 0%, 0.5));
+  animation: slide-in-elliptic-left-bck 0.7s 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 a {
@@ -86,35 +84,6 @@ a {
   color: inherit;
   width: 100%;
   height: 100%;
-}
-
-
-.image-enter-active {
-  -webkit-animation: slide-in-elliptic-left-bck 0.7s 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-in-elliptic-left-bck 0.7s 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.image-leave-active {
-  -webkit-animation: slide-in-elliptic-left-bck 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-  animation: slide-in-elliptic-left-bck 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-}
-
-@-webkit-keyframes slide-in-elliptic-left-bck {
-  0% {
-    -webkit-transform: translateX(-800px) rotateY(-30deg) scale(6.5);
-    transform: translateX(-800px) rotateY(-30deg) scale(6.5);
-    -webkit-transform-origin: 200% 50%;
-    transform-origin: 200% 50%;
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translateX(0) rotateY(0) scale(1);
-    transform: translateX(0) rotateY(0) scale(1);
-    -webkit-transform-origin: -600px 50%;
-    transform-origin: -600px 50%;
-    opacity: 1;
-  }
 }
 
 @keyframes slide-in-elliptic-left-bck {
@@ -132,78 +101,6 @@ a {
     -webkit-transform-origin: -600px 50%;
     transform-origin: -600px 50%;
     opacity: 1;
-  }
-}
-
-@-webkit-keyframes wobble-hor-top {
-
-  0%,
-  100% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-  }
-
-  15% {
-    -webkit-transform: translateX(-30px) rotate(6deg);
-    transform: translateX(-30px) rotate(6deg);
-  }
-
-  30% {
-    -webkit-transform: translateX(15px) rotate(-6deg);
-    transform: translateX(15px) rotate(-6deg);
-  }
-
-  45% {
-    -webkit-transform: translateX(-15px) rotate(3.6deg);
-    transform: translateX(-15px) rotate(3.6deg);
-  }
-
-  60% {
-    -webkit-transform: translateX(9px) rotate(-2.4deg);
-    transform: translateX(9px) rotate(-2.4deg);
-  }
-
-  75% {
-    -webkit-transform: translateX(-6px) rotate(1.2deg);
-    transform: translateX(-6px) rotate(1.2deg);
-  }
-}
-
-@keyframes wobble-hor-top {
-
-  0%,
-  100% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-  }
-
-  15% {
-    -webkit-transform: translateX(-30px) rotate(6deg);
-    transform: translateX(-30px) rotate(6deg);
-  }
-
-  30% {
-    -webkit-transform: translateX(15px) rotate(-6deg);
-    transform: translateX(15px) rotate(-6deg);
-  }
-
-  45% {
-    -webkit-transform: translateX(-15px) rotate(3.6deg);
-    transform: translateX(-15px) rotate(3.6deg);
-  }
-
-  60% {
-    -webkit-transform: translateX(9px) rotate(-2.4deg);
-    transform: translateX(9px) rotate(-2.4deg);
-  }
-
-  75% {
-    -webkit-transform: translateX(-6px) rotate(1.2deg);
-    transform: translateX(-6px) rotate(1.2deg);
   }
 }
 

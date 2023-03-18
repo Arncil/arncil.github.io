@@ -17,10 +17,15 @@ window.addEventListener('resize', () => navHeight.value = document.getElementByI
 <style scoped>
 main {
   min-height: 100vh;
-  /* min-height: calc(var(--vh, 1vh) * 100); */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
+}
+
+@media (max-width: 930px) {
+  main {
+    flex-direction: column;
+  }
 }
 </style>

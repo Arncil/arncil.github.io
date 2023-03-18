@@ -84,23 +84,21 @@ const getImageUrl = image => {
 </script>
 
 <template>
-    <Transition name="toolbox" appear>
-        <div class="container">
-            <div class="slide" v-for="slide in data " :key="slide.id"
-                :class="{ active: isActive(slide), nonactive: !isActive(slide), [slide.id]: true }"
-                @click="handleOnClick(slide)">
-                <Transition name="slide">
-                    <img v-if="isActive(slide)" :src="getImageUrl(slide.icon)" :alt="slide.alt">
-                </Transition>
-                <Transition name="slide">
-                    <h1 v-if="isActive(slide)">{{ slide.title }}</h1>
-                </Transition>
-                <Transition name="slide">
-                    <h6 v-if="isActive(slide)">{{ slide.subtitle }}</h6>
-                </Transition>
-            </div>
+    <div class="container">
+        <div class="slide" v-for="slide in data " :key="slide.id"
+            :class="{ active: isActive(slide), nonactive: !isActive(slide), [slide.id]: true }"
+            @click="handleOnClick(slide)">
+            <Transition name="slide">
+                <img v-if="isActive(slide)" :src="getImageUrl(slide.icon)" :alt="slide.alt">
+            </Transition>
+            <Transition name="slide">
+                <h1 v-if="isActive(slide)">{{ slide.title }}</h1>
+            </Transition>
+            <Transition name="slide">
+                <h6 v-if="isActive(slide)">{{ slide.subtitle }}</h6>
+            </Transition>
         </div>
-    </Transition>
+    </div>
 </template>
 
 <style scoped>
@@ -110,6 +108,7 @@ const getImageUrl = image => {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .text {
@@ -117,16 +116,6 @@ const getImageUrl = image => {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-}
-
-.toolbox-enter-active {
-    -webkit-animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.toolbox-leave-active {
-    -webkit-animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
-    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both reverse;
 }
 
 .slide-enter-active {
@@ -195,7 +184,6 @@ h6 {
 .g h6 {
     color: hsl(0, 100%, 10%);
 }
-
 
 .active {
     flex-grow: 1;

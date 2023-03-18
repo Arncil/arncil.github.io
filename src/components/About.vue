@@ -1,6 +1,111 @@
 <script setup>
-import { Icon } from '@iconify/vue';
+import HashtagsLeft from './HashtagsLeft.vue'
+import HashtagsRight from './HashtagsRight.vue'
 
+
+const hashtagsLineOne = [
+    {
+        id: 0,
+        text: 'HTML3',
+        delay: '0s'
+    },
+    {
+        id: 1,
+        text: 'CSS3',
+        delay: '1.1s'
+    },
+    {
+        id: 2,
+        text: 'JavaScript',
+        delay: '2.6s'
+    },
+    {
+        id: 3,
+        text: 'Vue',
+        delay: '3.5s'
+    },
+    {
+        id: 4,
+        text: 'React',
+        delay: '4.6s'
+    },
+    {
+        id: 5,
+        text: 'UI/UX',
+        delay: '5.7s'
+    },
+    {
+        id: 6,
+        text: 'Node',
+        delay: '6.75s'
+    },
+];
+
+const hashtagsLineTwo = [
+    {
+        id: 0,
+        text: 'TypeScript',
+        delay: '0s'
+    },
+    {
+        id: 1,
+        text: 'NPM',
+        delay: '1.05s'
+    },
+    {
+        id: 2,
+        text: 'Redux',
+        delay: '2.22s'
+    },
+    {
+        id: 3,
+        text: 'Firebase',
+        delay: '3.65s'
+    },
+    {
+        id: 4,
+        text: 'Router',
+        delay: '4.9s'
+    },
+    {
+        id: 5,
+        text: 'Illustrator',
+        delay: '6.4s'
+    },
+];
+
+const hashtagsLineThree = [
+    {
+        id: 0,
+        text: 'Tailwind',
+        delay: '0s'
+    },
+    {
+        id: 1,
+        text: 'Photoshop',
+        delay: '1.55s'
+    },
+    {
+        id: 2,
+        text: 'accessibility',
+        delay: '3.25s'
+    },
+    {
+        id: 3,
+        text: 'Sass',
+        delay: '4.3s'
+    },
+    {
+        id: 4,
+        text: 'Aseprite',
+        delay: '5.65s'
+    },
+    {
+        id: 5,
+        text: 'ES6',
+        delay: '6.65s'
+    },
+];
 </script>
 
 <template>
@@ -18,51 +123,46 @@ import { Icon } from '@iconify/vue';
             </p>
             <h4>Thank you for visiting!</h4>
         </div>
-        <img src="/portfolio-website/images/cv-photo.png" alt="Miłosz's Photo">
+        <div class="lines">
+            <div class="hashtags">
+                <HashtagsLeft v-for="hashtag in hashtagsLineOne" :key="hashtag.id" :id="hashtag.id" :content="hashtag.text"
+                    :delay="hashtag.delay" />
+            </div>
+            <div class="hashtags">
+                <HashtagsRight v-for="hashtag in hashtagsLineTwo" :key="hashtag.id" :id="hashtag.id" :content="hashtag.text"
+                    :delay="hashtag.delay" />
+            </div>
+            <div class="hashtags">
+                <HashtagsLeft v-for="hashtag in hashtagsLineThree" :key="hashtag.id" :id="hashtag.id"
+                    :content="hashtag.text" :delay="hashtag.delay" />
+            </div>
+        </div>
     </div>
-    <div class="hashtags">
-        <p><Icon icon="mingcute:hashtag-line" />HTML</p>
-        <p><Icon icon="mingcute:hashtag-line" />CSS</p>
-        <p><Icon icon="mingcute:hashtag-line" />JavaScript</p>
-        <p><Icon icon="mingcute:hashtag-line" />Vue</p>
-        <p><Icon icon="mingcute:hashtag-line" />React</p>
-        <p><Icon icon="mingcute:hashtag-line" />UI/UX</p>
-        <p><Icon icon="mingcute:hashtag-line" />animation</p>
-        <p><Icon icon="mingcute:hashtag-line" />Vite</p>
-        <p><Icon icon="mingcute:hashtag-line" />Node</p>
-    </div>
+    <img src="/portfolio-website/images/cv-photo.png" alt="Miłosz's Photo">
 </template>
 
 <style scoped>
+.lines {
+    display: grid;
+    place-items: center;
+    min-height: 20vh;
+}
+
 .hashtags {
-    height: 5vh;
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     background: linear-gradient(90deg, transparent 30%, transparent 70%);
+    margin-bottom: 1vh;
+    position: relative;
 }
-
-.hashtags p {
-    display: flex;
-    align-items: center;
-    gap: 0 0.2rem;
-    color: hsl(0, 0%, 85%);
-    font-size: 1.5vw;
-    background-color: hsl(0, 0%, 20%);
-    border-radius: 0.4rem;
-    padding: 0.7rem 1rem;
-    margin-right: 1rem;
-    box-shadow:
-        0 0.1rem 0.2rem rgb(0 0 0 / 20%),
-        0 0.1rem 0.5rem rgb(0 0 0 / 30%),
-        0 0.2rem 1.5rem rgb(0 0 0 / 40%);
-}
-
 
 .container {
     display: flex;
-    justify-content: space-around;
-    align-items: start;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 80vh;
 }
 
 .text {
@@ -70,11 +170,11 @@ import { Icon } from '@iconify/vue';
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 50%;
+    width: 100%;
 }
 
 img {
-    height: 70vh;
+    height: 80vh;
     -webkit-filter: drop-shadow(2px 2px 20px hsla(0, 0%, 0%, 0.5));
     filter: drop-shadow(2px 2px 20px hsla(0, 0%, 0%, 0.5));
 }
@@ -83,5 +183,71 @@ p {
     font-size: 1.5vw;
     line-height: 1.3;
     text-align: justify;
+}
+
+.text h1 {
+    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.text p {
+    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s;
+}
+
+.text h4 {
+    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 1s;
+}
+
+img {
+    animation: tilt-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 1.5s;
+}
+
+@keyframes slide-in-left {
+    0% {
+        -webkit-transform: translateX(-1000px);
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes tilt-in-tl {
+    0% {
+        -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+        transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 930px) {
+    .container {
+        width: 80%;
+        height: max-content;
+    }
+
+    .lines {
+        display: none;
+    }
+
+    img {
+        height: 40vh;
+        transition: all 0.5s;
+    }
+
+    p {
+        font-size: 3.5vw;
+        line-height: 1.3;
+        text-align: justify;
+    }
 }
 </style>
