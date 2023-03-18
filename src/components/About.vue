@@ -106,6 +106,8 @@ const hashtagsLineThree = [
         delay: '6.65s'
     },
 ];
+
+const imgPath = '/portfolio-website/images/cv-photo.png';
 </script>
 
 <template>
@@ -138,7 +140,7 @@ const hashtagsLineThree = [
             </div>
         </div>
     </div>
-    <img src="/portfolio-website/images/cv-photo.png" alt="Miłosz's Photo">
+    <img :src="imgPath" alt="Miłosz's Photo">
 </template>
 
 <style scoped>

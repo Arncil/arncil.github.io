@@ -3,6 +3,7 @@ import { RouterLink } from 'vue-router';
 import Introduction from '../components/Introduction.vue';
 import GlowingBox from '../components/GlowingBox.vue';
 
+const imgPath = '/portfolio-website/images/avatar.png';
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import GlowingBox from '../components/GlowingBox.vue';
       <Introduction />
     </div>
     <div class="image">
-      <img src="/portfolio-website/images/avatar.png" alt="Miłosz's Avatar">
+      <img :src="imgPath" alt="Miłosz's Avatar">
     </div>
     <div class="GlowingBox">
       <RouterLink to="/projects">
