@@ -27,9 +27,15 @@ const handleOnMouseOver = event => {
 
 <template>
     <header>
-        <h3 class="one" @mouseover="handleOnMouseOver" data-value="Hi there!">Hi there!</h3>
-        <h1 class="two" @mouseover="handleOnMouseOver" data-value="My name is Miłosz">My name is Miłosz</h1>
-        <h3 class="three" @mouseover="handleOnMouseOver" data-value="I'm a web developer">I'm a web developer</h3>
+        <Transition name="one" appear>
+            <h3 @mouseover="handleOnMouseOver" data-value="Hi there!">Hi there!</h3>
+        </Transition>
+        <Transition name="two" appear>
+            <h1 @mouseover="handleOnMouseOver" data-value="My name is Miłosz">My name is Miłosz</h1>
+        </Transition>
+        <Transition name="three" appear>
+            <h3 @mouseover="handleOnMouseOver" data-value="I'm a web developer">I'm a web developer</h3>
+        </Transition>
     </header>
 </template>
 
@@ -56,19 +62,20 @@ h3 {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: bg-move 8s linear infinite;
     line-height: 1;
+    animation: bg-move 8s linear infinite;
+
 }
 
-.one {
+.one-enter-active {
     animation: bounce-top 2s both 1.5s;
 }
 
-.two {
+.two-enter-active {
     animation: bounce-top 2s both 1s;
 }
 
-.three {
+.three-enter-active {
     animation: bounce-top 2s both 0.5s;
 }
 
