@@ -76,7 +76,7 @@ const handleOnClick = el => {
 const isActive = el => index.value === data.indexOf(el);
 
 const getImageUrl = image => {
-    const path = `/portfolio-website/icons/${image}.svg`;
+    const path = `/icons/${image}.svg`;
     return new URL(path, import.meta.url).href
 };
 

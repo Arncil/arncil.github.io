@@ -107,7 +107,7 @@ const hashtagsLineThree = [
     },
 ];
 
-const imgPath = '/portfolio-website/images/cv-photo.png';
+const imgPath = '/images/cv-photo.png';
 </script>
 
 <template>
