@@ -67,10 +67,10 @@ const data = [
         title: 'Previous Portfolio Website',
         background: 'previous-portfolio-website',
         description: 'Time goes by, skills improve, new projects beat old ones. Even though I\'m proud of my previous portfolio site, I wanted a new one. Still, you can check out that one here.',
-        repository: 'https://github.com/Arncil/arncil.github.io',
-        website: 'https://arncil.github.io',
+        repository: 'https://github.com/Arncil/previous-portfolio-website',
+        website: 'https://arncil.github.io/previous-portfolio-website',
     }
-    // when adding new projects remember to update $project-length in cscc below
+    // when adding new projects remember to update $project-length in scss below
 ]
 
 const handleOnMouseMove = e => {

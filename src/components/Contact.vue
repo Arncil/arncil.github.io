@@ -13,7 +13,7 @@ const handleOnMouseMove = e => {
 
 const handleOnClick = e => {
     e.preventDefault();
-    alert('Sorry, unfortunately, an error occurred. You can mail me directly at jackowiakmilosz@gmail.com')
+    alert('Sorry, this feature is not available at the moment. You can mail me directly at jackowiakmilosz@gmail.com')
 };
 
 </script>
