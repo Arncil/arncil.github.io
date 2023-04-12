@@ -64,6 +64,14 @@ const data = [
     },
     {
         id: '7',
+        title: 'Playlist Creator',
+        background: 'playlist-creator',
+        description: 'Need to find some new tracks? Using this Playlist Creator you can save tracks, edit the order, and even check out details of each song!',
+        repository: 'https://github.com/Arncil/playlist-creator',
+        website: 'https://arncil.github.io/playlist-creator',
+    },
+    {
+        id: '8',
         title: 'Previous Portfolio Website',
         background: 'previous-portfolio-website',
         description: 'Time goes by, skills improve, new projects beat old ones. Even though I\'m proud of my previous portfolio site, I wanted a new one. Still, you can check out that one here.',
@@ -122,7 +130,7 @@ const getImageUrl = image => {
 
 <style lang="scss" scoped>
 $project-height: 90vh;
-$project-length: 8;
+$project-length: 9;
 $class-name: container;
 
 .#{$class-name} {
